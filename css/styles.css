@@ -496,8 +496,8 @@ background-color: #404BBF;
   pointer-events: none;
 
   transition:
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 300ms,
-    visibility 0ms linear 300ms;
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-open {
@@ -537,50 +537,9 @@ background-color: #404BBF;
   transition-delay: 600ms;
 }
 
-.modal-btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-
-  height: 24px;
-  width: 24px;
-
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: #e7e9fc;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0;
-
-  cursor: pointer;
-  transition:
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-btn:hover,
-.modal-btn:focus {
-  background-color: #404bbf;
-  border: none;
-  outline: none;
-}
-
-.modal-btn-icon {
-  stroke: currentColor;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  fill: none;
-}
-
-.modal-btn:hover .modal-btn-icon,
-.modal-btn:focus .modal-btn-icon {
-  fill: #ffffff;
-  stroke: #ffffff;
-}
-
+/* Заголовок модалки */
 .modal-caption {
-  margin-bottom: 40px;
+  margin-bottom: 16px; /* виправлено згідно завдання */
 
   font-weight: 500;
   font-size: 16px;
@@ -595,6 +554,12 @@ background-color: #404BBF;
   font-weight: 600;
 }
 
+/* Форми */
+
+.modal-form {
+  /* якщо потрібно, додати відступи/падінги */
+}
+
 .modal-form-box {
   margin-bottom: 8px;
 }
@@ -607,6 +572,7 @@ background-color: #404BBF;
   line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
+  cursor: pointer;
 }
 
 .modal-form-field {
@@ -623,9 +589,15 @@ background-color: #404BBF;
   border-radius: 4px;
   background-color: transparent;
 
-  outline: none;
+  outline: transparent;
 
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.modal-form-input::placeholder {
+  color: rgba(46, 47, 66, 0.3);
 }
 
 .modal-form-input:focus {
@@ -638,12 +610,14 @@ background-color: #404BBF;
   left: 16px;
   transform: translateY(-50%);
 
-  fill: none;
+  fill: none; /* прибираємо fill зі спрайту */
   stroke: rgba(46, 47, 66, 0.4);
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .modal-form-input:focus + .modal-form-icon {
+  fill: #4D5AE5;
   stroke: #4D5AE5;
 }
 
@@ -655,28 +629,40 @@ background-color: #404BBF;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
-  color: rgba(46, 47, 66, 0.4);
+  color: rgba(46, 47, 66, 0.8);
 
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   background-color: transparent;
 
   resize: none;
-  outline: none;
+  outline: transparent;
 
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-form-message:focus {
-  border-color: #4D5AE5;
+  font-family: inherit;
 }
 
 .modal-form-message::placeholder {
   color: rgba(46, 47, 66, 0.3);
 }
 
+.modal-form-message:focus {
+  border-color: #4D5AE5;
+}
+
 .modal-form-agreement {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.checkbox.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  border: 0 !important;
 }
 
 .modal-form-agreement-field {
@@ -688,6 +674,7 @@ background-color: #404BBF;
   display: flex;
   align-items: center;
   cursor: pointer;
+  user-select: none;
 }
 
 .modal-form-agreement-checkbox {
@@ -710,6 +697,7 @@ background-color: #404BBF;
   box-sizing: border-box;
 }
 
+/* Для стану checked, щоб сховати рамку */
 .checkbox:checked + .modal-form-agreement-field > .modal-form-agreement-checkbox {
   background-color: #404bbf;
   border-color: transparent;
@@ -720,12 +708,27 @@ background-color: #404BBF;
   width: 10px;
   height: 8px;
   fill: currentColor;
+  pointer-events: none;
 }
 
 .modal-form-agreement-link {
   color: #4D5AE5;
   text-decoration: underline;
   text-decoration-skip-ink: none;
+  margin-left: 2px;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-accent {
@@ -735,18 +738,8 @@ background-color: #404BBF;
 
   margin: 0 auto;
 
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-
   color: #ffffff;
   background-color: #4D5AE5;
-
-  border: none;
-  border-radius: 4px;
-
-  cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-accent:disabled {
