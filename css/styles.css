@@ -570,13 +570,13 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, -70%);
-  opacity: 0; */
+  transform: translate(-50%, -70%);
+  opacity: 0; 
 
   width: 408px;
   min-height: 584px;
   padding: 72px 24px 24px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+  /* transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);  */
   background: rgb(252, 252, 252);
   border-radius: 4px;
   box-shadow:
@@ -584,12 +584,10 @@ body {
     0 1px 3px rgba(0, 0, 0, 0.12),
     0 2px 1px rgba(0, 0, 0, 0.2);
 }
-.modal-form{
+.modal-tr{
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
-.modal-form-box{
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
-}
+
 .backdrop.is-open .modal {
   transform: translate(-50%, -50%);
   opacity: 1;
