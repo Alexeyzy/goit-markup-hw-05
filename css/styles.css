@@ -705,6 +705,7 @@ body {
 
 .modal-form-agreement {
   margin-bottom: 24px;
+  display: inline-flex;
 }
 
 .checkbox.visually-hidden {
